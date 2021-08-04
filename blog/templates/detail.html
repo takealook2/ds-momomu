@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}<br>
+<div class="card">
+    <div class="card-header">
+        <h4 class="card-title">{{blog.title}}</h4>
+        <small>{{blog.writer}}<br>{{blog.pub_date}}</small>
+    </div>
+    {% if blog.image %}
+    <img src="{{blog.image.url}}" alt="" width="500" height="500">
+    {% endif %}
+    <div class="card-body">
+      <!-- <p class="card-text">{{blog.body}}</p> -->
+      <p class="card-text">{{blog.description|safe}}</p>
+    </div>
+  </div><br>
+
+    <h4>{{blog.title}}</h4>
+    <div>
+    {{blog.writer}}<br>
+    {{blog.pub_date}}</div>
+    <hr>
+    {% if blog.image %}
+    <p><img src="{{blog.image.url}}" alt=""></p>
+    {% endif %}
+    <p>{{blog.body}}</p>
+    <!-- <a href="{% url 'edit' blog.id%}">수정하기</a>
+    <a href="{% url 'delete' blog.id%}">삭제하기</a> -->
+    <button type="submit" class="btn btn-secondary" onclick="location.href='{% url 'edit' blog.id%}'">수정하기</button>
+    <button type="submit" class="btn btn-secondary" onclick="location.href='{% url 'delete' blog.id%}'">삭제하기</button>
+{% endblock %}
